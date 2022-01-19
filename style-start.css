@@ -142,11 +142,37 @@ h3 {
   border: 2px solid #a775f1;
 }
 
+
+
 /* components */
 .testimonial-grid {
+  /* core grid elements: display: grid, set a gap, setup columns */
+  display: grid;
+  gap: 1.5rem;
+  /* grid-template-columns: repeat(4, 1fr); */
+  /* setting grid rows - when you can, don't set explicit rows. instead allow for rows to be created implicitly */
+
   padding-block: 2rem;
   width: min(95%, 70rem);
   margin-inline: auto;
+}
+
+@media (min-width: 50em) {
+
+  .grid-col-span-2 {
+    grid-column: span 2;
+  }
+  .testimonial-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .testimonial:last-child {
+    grid-column: 4;
+    /* grid-row-start: 1;
+    grid-row-end: span 2; */
+    /* or, shorthand: */
+    grid-row: 1 / span 2;
+  }
 }
 
 .testimonial {
@@ -155,6 +181,8 @@ h3 {
   border-radius: 0.5rem;
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 }
+
+
 
 .testimonial.quote {
   background-image: url("./images/bg-pattern-quotation.svg");
